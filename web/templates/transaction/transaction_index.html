@@ -1,0 +1,36 @@
+{{ define "content" }}
+
+<h2 class="mb-4">Transaksi Proyek</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <table class="table mb-0">
+      <thead class="thead-light">
+        <tr>
+          <th>Nama Funder</th>
+          <th>Email</th>
+          <th>Nama Proyek</th>
+          <th>Waktu</th>
+          <th>Biaya</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range .transactions }}
+        <tr>
+          <td class="text-capitalize">{{ .User.Name }}</td>
+          <td>{{ .User.Email }}</td>
+          <td>{{ .Campaign.Name }}</td>
+          <td>{{ .CreatedAt }}</td>
+          <td class="amount" >{{ .AmountFormatIDR }}</td>
+          <td class="text-capitalize">
+            <span class="status">{{ .Status }}</span>
+          </td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{{ end }}

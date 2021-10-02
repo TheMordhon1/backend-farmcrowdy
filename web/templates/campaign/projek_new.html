@@ -1,0 +1,86 @@
+{{ define "content" }}
+
+<h2 class="mb-4">Proyek Baru</h2>
+
+{{ if .Error }}
+<div class="alert alert-danger">
+    {{ .Error }}
+</div>
+{{ end }}
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form action="/projek" method="POST">
+            <div class="form-group">
+                <label for="user_id">User</label>
+                <select name="user_id" class="form-control">
+                    <option value="">-- Select user --</option>
+                    {{ range .Users }}
+                        {{ if eq .ID $.UserID }}
+                            <option value="{{ .ID }}" selected>{{ .Name }}</option>
+                        {{ else }}
+                            <option value="{{ .ID }}">{{ .Name }}</option>
+                        {{ end }}
+                    {{ end }}
+                </select>
+
+            </div>
+
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" name="name" placeholder="Masukan Nama Projek" required class="form-control" value="{{ .Name }}">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Alamat</label>
+                <input type="text" name="address" placeholder="Nama Kabupaten/Kota, Nama Provinsi" required class="form-control" value="{{ .Address }}">
+            </div>
+
+            <div class="form-group">
+                <label for="short_description" class="text-capitalize">Deskripsi Singkat</label>
+                <input type="text" name="short_description" placeholder="Desktipsi singkat projek " required class="form-control" value="{{ .ShortDescription }}">
+            </div>
+
+            <div class="form-group">
+                <label for="description_komoditas">Deskripsi Komoditas</label>
+                <textarea name="description_komoditas" cols="10" rows="4" placeholder="Deskripsi Projek" required class="form-control">{{ .DescriptionKomoditas }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="description_prospek">Deskripsi Prospek</label>
+                <textarea name="description_prospek" cols="10" rows="4" placeholder="Deskripsi Projek" required class="form-control">{{ .DescriptionProspek }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="description_risiko">Deskripsi Risiko</label>
+                <textarea name="description_risiko" cols="10" rows="4" placeholder="Deskripsi Projek" required class="form-control">{{ .DescriptionRisiko }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="description_kelompok_tani">Deskripsi Kelompok Tani</label>
+                <textarea name="description_kelompok_tani" cols="10" rows="4" placeholder="Deskripsi Projek" required class="form-control">{{ .DescriptionKelompokTani }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="goal_amount" class="text-capitalize">Total dana yang dibutuhkan</label>
+                <input type="number" name="goal_amount" placeholder="Masukan total dana yang dibutuhkan" required class="form-control" value="{{ .GoalAmount }}">
+            </div>
+
+            <div class="form-group">
+                <label for="min_pembayaran" class="text-capitalize">Minimal Pembiayaan</label>
+                <input type="number" name="min_pembayaran" placeholder="Masukan minimal pembiayaan" required class="form-control" value="{{ .MinPembayaran }}">
+            </div>
+
+            <div class="form-group">
+                <label for="perks" class="text-capitalize">Yang ditawarkan kepada funder</label>
+                <input type="text" name="perks" placeholder="*Jika lebih dari satu pisahkan dengan tanda koma (,)" required class="form-control" value="{{ .Perks }}">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{ end }}

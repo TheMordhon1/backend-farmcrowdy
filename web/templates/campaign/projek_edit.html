@@ -1,0 +1,72 @@
+{{ define "content" }}
+
+<h2 class="mb-4">Edit Projek</h2>
+
+{{ if .Error }}
+<div class="alert alert-danger">
+    {{ .Error }}
+</div>
+{{ end }}
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form action="/projek/update/{{ .ID }}" method="POST">
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" name="name" placeholder="Masukan name" required class="form-control" value="{{ .Name }}">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Alamat</label>
+                <input type="text" name="address" placeholder="Nama Kabupaten/Kota, Nama Provinsi" required class="form-control" value="{{ .Address }}">
+            </div>
+
+            <div class="form-group">
+                <label for="short_description">Deskripsi Singkat</label>
+                <input type="text" name="short_description" placeholder="Deskripsi Singkat" required class="form-control" value="{{ .ShortDescription }}">
+            </div>
+
+            <div class="form-group">
+                <label for="description_komoditas">Deskripsi Komoditas</label>
+                <textarea name="description_komoditas" cols="10" rows="4" placeholder="Deskripsi Komoditas" required class="form-control">{{ .DescriptionKomoditas }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="description_prospek">Deskripsi Prospek</label>
+                <textarea name="description_prospek" cols="10" rows="4" placeholder="Deskripsi Prospek" required class="form-control">{{ .DescriptionProspek }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="description_risiko">Deskripsi Risiko</label>
+                <textarea name="description_risiko" cols="10" rows="4" placeholder="Deskripsi Risiko" required class="form-control">{{ .DescriptionRisiko }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="description_kelompok_tani">Deskripsi Kelompok Tani</label>
+                <textarea name="description_kelompok_tani" cols="10" rows="4" placeholder="Deskripsi Kelompok Tani" required class="form-control">{{ .DescriptionKelompokTani }}</textarea>
+            </div>
+
+
+            <div class="form-group">
+                <label for="goal_amount">Total Biaya Projek</label>
+                <input type="number" name="goal_amount" placeholder="Masukan goal amount" required class="form-control" value="{{ .GoalAmount }}">
+            </div>
+
+            <div class="form-group">
+                <label for="min_pembayaran">Minimal Pembayaran</label>
+                <input type="number" name="min_pembayaran" placeholder="Masukan Minimal Pembayaran" required class="form-control" value="{{ .MinPembayaran }}">
+            </div>
+
+            <div class="form-group">
+                <label for="perks" class="text-capitalize">yang ditawarkan kepada funder </label>
+                <input type="text" name="perks" placeholder="* Jika lebih dari satu pisahkan dengan tanda koma (,)" required class="form-control" value="{{ .Perks }}">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{ end }}
