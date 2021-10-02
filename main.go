@@ -56,7 +56,7 @@ func main() {
 	/* CORS */
 
 	router.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"http://192.168.100.19:3000"},
+		AllowOrigins: []string{"http://farmcrowdy.gatemarried.com"},
 		AllowMethods: []string{"GET", "PUT", "PATCH", "POST", "DELETE"},
 		AllowHeaders: []string{"Authorization", "Content-Type"},
 	}))
